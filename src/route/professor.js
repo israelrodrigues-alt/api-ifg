@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { listar, criar, atualizar, deletar } from '../controllers/alunocontroller.js'
+import { listar, criar, atualizar, deletar } from '../controllers/professor-controller.js'
 
 const router = Router()
 
@@ -9,3 +9,4 @@ router.put('/:id', atualizar)
 router.delete('/:id', deletar)
 
 export default router
+

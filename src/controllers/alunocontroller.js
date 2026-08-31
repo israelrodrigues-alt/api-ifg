@@ -1,12 +1,10 @@
-import (alunos) from '../dados.js'
+import { alunos } from '../dados/db.js'
 
-
-app.get('/alunos', (pedido, resposta) => {
+export const listar = (pedido, resposta) => {
   resposta.json(alunos)
-})
+}
 
-app.post('/alunos', (pedido, resposta) => {
-
+export const criar = (pedido, resposta) => {
   const aluno = {
     id : alunos.length + 1,
     matricula : pedido.body.matricula,
@@ -18,9 +16,9 @@ app.post('/alunos', (pedido, resposta) => {
 
   alunos.push(aluno)
   resposta.json(aluno)
-})
+}
 
-app.put('/alunos/:id', (pedido, resposta) => {
+export const atualizar = (pedido, resposta) => {
   const index = alunos.findIndex(aluno => aluno.id == pedido.params.id)
 
   if (index === -1) {
@@ -29,24 +27,14 @@ app.put('/alunos/:id', (pedido, resposta) => {
 
   alunos[index] = { ...alunos[index], ...pedido.body }
   resposta.json(alunos[index])
+}
 
-})
-
-app.delete('/alunos/:id', (pedido, resposta) => {
-  const index = alunos.findIndex(aluno => aluno.id === pedido.parms.id)
+export const deletar = (pedido, resposta) => {
+  const index = alunos.findIndex(aluno => aluno.id === pedido.params.id)
   if (index === -1) {
     return resposta.json({ mensagem: 'Aluno não encontrado' })
   }
 
   alunos.splice(index, 1)
   resposta.json({ mensagem: 'Aluno deletado com sucesso' })
-})
-
-
-
-
-// --------------------------- Check if the API is working --------------------------- 
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000')
-})
+}

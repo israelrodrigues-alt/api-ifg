@@ -1,14 +1,6 @@
-const alunos = []
-const professores = []
-const disciplinas = []
-const cursos = []
-const turmas = []
-
-module.exports = {
-    alunos,
-    professores,
-    disciplinas,
-    cursos,
-    turmas
-}
+export const alunos = []
+export const professores = []
+export const disciplinas = []
+export const cursos = []
+export const turmas = []
 
